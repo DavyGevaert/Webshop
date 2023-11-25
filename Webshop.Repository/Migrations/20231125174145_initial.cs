@@ -16,7 +16,7 @@ namespace Webshop.Repository.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TrailerURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<int>(type: "int", nullable: false)
                 },
@@ -27,7 +27,7 @@ namespace Webshop.Repository.Migrations
 
             migrationBuilder.InsertData(
                 table: "Blurays",
-                columns: new[] { "Id", "Description", "Image", "Price", "Title", "TrailerURL" },
+                columns: new[] { "Id", "Description", "ImageURL", "Price", "Title", "TrailerURL" },
                 values: new object[,]
                 {
                     { 1, "Arnold Schwarzenegger stars as Dutch Schaefer, the leader of an elite paramilitary rescue team on a mission to save hostages in guerrilla-held territory in a Central American rainforest, who encounter the deadly Predator (Kevin Peter Hall), a skilled, technologically advanced alien who stalks and hunts them down.", "https://images.static-bluray.com/movies/covers/207590_large.jpg?t=1529471856", 7, "Predator", "https://youtu.be/_1wDBNHYDv8" },

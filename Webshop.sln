@@ -13,13 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{D7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{17AE4CC9-3142-48E9-A6A0-CB885C83F92E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webshop.Repository", "Webshop.Repository\Webshop.Repository.csproj", "{3E312964-FDAD-4226-A216-E7A512AE66E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webshop.Repository", "Webshop.Repository\Webshop.Repository.csproj", "{3E312964-FDAD-4226-A216-E7A512AE66E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webshop.Model", "Webshop.Model\Webshop.Model.csproj", "{B3415080-5A30-4A71-A076-0BF44552F868}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webshop.Model", "Webshop.Model\Webshop.Model.csproj", "{B3415080-5A30-4A71-A076-0BF44552F868}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webshop.UI.BlazorApp", "Webshop.UI.BlazorApp\Webshop.UI.BlazorApp.csproj", "{9E448468-79BE-47C2-AFFD-8229663F2276}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webshop.UI.BlazorApp", "Webshop.UI.BlazorApp\Webshop.UI.BlazorApp.csproj", "{9E448468-79BE-47C2-AFFD-8229663F2276}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webshop.Api", "Webshop.Api\Webshop.Api.csproj", "{F3D97F51-26BC-4370-8AAA-7F3BDD43E1DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webshop.Api", "Webshop.Api\Webshop.Api.csproj", "{F3D97F51-26BC-4370-8AAA-7F3BDD43E1DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webshop.Services", "Webshop.Services\Webshop.Services.csproj", "{7BA2E69F-0258-41F4-AAE5-C9619037A7E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webshop.Services.Abstractions", "Webshop.Services.Abstractions\Webshop.Services.Abstractions.csproj", "{F6C8ACD8-B3B3-4509-B68F-6763EF5FBC7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +47,14 @@ Global
 		{F3D97F51-26BC-4370-8AAA-7F3BDD43E1DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3D97F51-26BC-4370-8AAA-7F3BDD43E1DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3D97F51-26BC-4370-8AAA-7F3BDD43E1DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BA2E69F-0258-41F4-AAE5-C9619037A7E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BA2E69F-0258-41F4-AAE5-C9619037A7E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BA2E69F-0258-41F4-AAE5-C9619037A7E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BA2E69F-0258-41F4-AAE5-C9619037A7E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6C8ACD8-B3B3-4509-B68F-6763EF5FBC7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6C8ACD8-B3B3-4509-B68F-6763EF5FBC7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6C8ACD8-B3B3-4509-B68F-6763EF5FBC7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6C8ACD8-B3B3-4509-B68F-6763EF5FBC7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +64,8 @@ Global
 		{B3415080-5A30-4A71-A076-0BF44552F868} = {DABE4432-EE22-4BEE-B6FE-3AD1C71099D4}
 		{9E448468-79BE-47C2-AFFD-8229663F2276} = {17AE4CC9-3142-48E9-A6A0-CB885C83F92E}
 		{F3D97F51-26BC-4370-8AAA-7F3BDD43E1DD} = {7979FFEE-053B-43FD-A15D-AC79F7206E23}
+		{7BA2E69F-0258-41F4-AAE5-C9619037A7E0} = {D7C08BA8-4F6F-4AF2-B589-2A2EA32A6713}
+		{F6C8ACD8-B3B3-4509-B68F-6763EF5FBC7A} = {D7C08BA8-4F6F-4AF2-B589-2A2EA32A6713}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {995C5C2B-4815-4333-8E0A-97A11E80DD2B}
