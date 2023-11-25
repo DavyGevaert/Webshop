@@ -5,7 +5,6 @@ using Webshop.Sdk.Abstractions;
 using Webshop.Services.Model.Core;
 using Webshop.Services.Model.Results;
 using static System.Net.Mime.MediaTypeNames;
-using System.Net.Http;
 
 namespace Webshop.Sdk
 {
