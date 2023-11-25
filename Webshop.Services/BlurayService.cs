@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Webshop.Model;
 using Webshop.Repository;
+using Webshop.Services.Abstractions;
 
 namespace Webshop.Services
 {
-    public class BlurayService
+    public class BlurayService : IBlurayService
     {
         private readonly WebshopDbContext _dbContext;
 
