@@ -10,7 +10,7 @@ namespace Webshop.Repository
 {
     public class WebshopDbContext : DbContext
     {
-        public static string LocalConnectionString { get; set; } =
+        public static string ConnectionString { get; set; } =
             @"Data Source=DESKTOP-6BF840K\VIVES;Initial Catalog=WebshopDB;Integrated Security=True";
 
         public WebshopDbContext(DbContextOptions<WebshopDbContext> options) : base(options)
@@ -28,7 +28,7 @@ namespace Webshop.Repository
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(LocalConnectionString);
+            optionsBuilder.UseSqlServer(ConnectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
