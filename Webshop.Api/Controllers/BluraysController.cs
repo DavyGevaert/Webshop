@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Webshop.Model;
 using Webshop.Services.Abstractions;
+using Webshop.Services.Model.Results;
 
 namespace Webshop.Api.Controllers
 {
@@ -30,14 +30,14 @@ namespace Webshop.Api.Controllers
 
 
         [HttpPost("Create")]
-        public IActionResult Create(Bluray bluray)
+        public IActionResult Create(BlurayResult bluray)
         {
             _blurayService.Create(bluray);
             return Ok(bluray);
         }
 
         [HttpPut("Update/{id}")]
-        public IActionResult Update([FromRoute] int id, [FromBody] Bluray bluray)
+        public IActionResult Update([FromRoute] int id, [FromBody] BlurayResult bluray)
         {
             var updatedBluray = _blurayService.Update(id, bluray);
             return Ok(updatedBluray);

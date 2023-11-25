@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Webshop.Services.Model
+namespace Webshop.Services.Model.Results
 {
     public class BlurayResult
     {
@@ -14,7 +14,7 @@ namespace Webshop.Services.Model
 
         public string? Description { get; set; }
 
-        public string? Image { get; set; }
+        public string? ImageURL { get; set; }
 
         public string? TrailerURL { get; set; }
 

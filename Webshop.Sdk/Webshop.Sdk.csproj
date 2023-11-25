@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Webshop.Model\Webshop.Model.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Webshop.Sdk.Abstractions\Webshop.Sdk.Abstractions.csproj" />
     <ProjectReference Include="..\Webshop.Services.Model\Webshop.Services.Model.csproj" />
   </ItemGroup>
 
