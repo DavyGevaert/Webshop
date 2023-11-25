@@ -11,7 +11,7 @@ namespace Webshop.Repository
     public class WebshopDbContext : DbContext
     {
         public static string LocalConnectionString { get; set; } =
-            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=WebshopDB;Integrated Security=True";
+            @"Data Source=DESKTOP-6BF840K\VIVES;Initial Catalog=WebshopDB;Integrated Security=True";
 
         public WebshopDbContext(DbContextOptions<WebshopDbContext> options) : base(options)
         {
@@ -77,7 +77,7 @@ namespace Webshop.Repository
                     Id = 5,
                     Title = "Limitless",
                     Description = "The story follows a writer who takes an experimental drug that increases mental ability, allowing him to become a high-powered business broker, but his success comes at a price and is full of danger. Bradley Cooper, Robert De Niro, and Abbie Cornish lead the cast and give fairly strong performances.",
-                    Image = "",
+                    Image = "https://images.static-bluray.com/movies/covers/24274_large.jpg?t=1452554093",
                     TrailerURL = "https://youtu.be/4TLppsfzQH8",
                     Price = 12
                 },
