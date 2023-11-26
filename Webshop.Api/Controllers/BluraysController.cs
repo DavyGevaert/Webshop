@@ -14,32 +14,32 @@ namespace Webshop.Api.Controllers
         }
 
         [HttpGet("Get")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            var item = _blurayService.Get(id);
+            var item = await _blurayService.GetAsync(id);
             return Ok(item);
         }
 
         [HttpGet("Find")]
-        public IActionResult Find()
+        public async Task<IActionResult> Find()
         {
-            var result = _blurayService.Find();
+            var result = await _blurayService.FindAsync();
 
             return Ok(result);
         }
 
 
         [HttpPost("Create")]
-        public IActionResult Create(Bluray bluray)
+        public async Task<IActionResult> Create(Bluray bluray)
         {
-            _blurayService.Create(bluray);
+            await _blurayService.Create(bluray);
             return Ok(bluray);
         }
 
         [HttpPut("Update/{id}")]
-        public IActionResult Update([FromRoute] int id, [FromBody] Bluray bluray)
+        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] Bluray bluray)
         {
-            var updatedBluray = _blurayService.Update(id, bluray);
+            var updatedBluray = await _blurayService.Update(id, bluray);
             return Ok(updatedBluray);
         }
 

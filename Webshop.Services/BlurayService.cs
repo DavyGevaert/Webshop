@@ -15,23 +15,21 @@ namespace Webshop.Services
             _dbContext = dbContext;
         }
 
-        public Bluray Get(int id)
+        public async Task<Bluray> GetAsync(int id)
         {
-            var bluray = _dbContext.Blurays                
-                .SingleOrDefault(p => p.Id == id);
+            var bluray = await _dbContext.Blurays.FirstOrDefaultAsync(b => b.Id == id);
 
             return bluray;
         }
 
-        public IList<Bluray> Find()
+        public async Task<IList<Bluray>> FindAsync()
         {
-            var blurays = _dbContext.Blurays
-                .ToList();
+            var blurays = await _dbContext.Blurays.ToListAsync();
 
             return blurays;
         }
 
-        public Bluray Create(Bluray bluray)
+        public async Task<Bluray> Create(Bluray bluray)
         {
             var dbBluray = new Bluray
             {
@@ -46,10 +44,10 @@ namespace Webshop.Services
             _dbContext.Blurays.Add(dbBluray);
             _dbContext.SaveChanges();
 
-            return Get(bluray.Id);
+            return await GetAsync(bluray.Id);
         }
 
-        public Bluray Update(int id, Bluray bluray)
+        public async Task<Bluray> Update(int id, Bluray bluray)
         {
             var dbBluray = _dbContext.Blurays
                             .SingleOrDefault(i => i.Id == id);
@@ -68,7 +66,7 @@ namespace Webshop.Services
 
             _dbContext.SaveChanges();
 
-            return Get(dbBluray.Id);
+            return await GetAsync(dbBluray.Id);
         }
 
         public bool Delete(int id)

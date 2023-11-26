@@ -11,7 +11,7 @@ using Webshop.Repository;
 namespace Webshop.Repository.Migrations
 {
     [DbContext(typeof(WebshopDbContext))]
-    [Migration("20231125174145_initial")]
+    [Migration("20231126124335_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

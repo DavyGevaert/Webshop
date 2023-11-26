@@ -9,10 +9,10 @@ namespace Webshop.Services.Abstractions
 {
     public interface IBlurayService
     {
-        Bluray Get(int id);
-        IList<Bluray> Find();
-        Bluray Create(Bluray item);
-        Bluray Update(int id, Bluray item);
+        Task<Bluray> GetAsync(int id);
+        Task<IList<Bluray>> FindAsync();
+        Task<Bluray> Create(Bluray item);
+        Task<Bluray> Update(int id, Bluray item);
         bool Delete(int id);
     }
 }
