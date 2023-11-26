@@ -11,7 +11,7 @@ using Webshop.Repository;
 namespace Webshop.Repository.Migrations
 {
     [DbContext(typeof(WebshopDbContext))]
-    [Migration("20231126124335_initial")]
+    [Migration("20231126202746_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,7 +58,7 @@ namespace Webshop.Repository.Migrations
                             ImageURL = "https://images.static-bluray.com/movies/covers/207590_large.jpg?t=1529471856",
                             Price = 7,
                             Title = "Predator",
-                            TrailerURL = "https://youtu.be/_1wDBNHYDv8"
+                            TrailerURL = "https://www.youtube.com/watch?v=_1wDBNHYDv8"
                         },
                         new
                         {
@@ -67,7 +67,7 @@ namespace Webshop.Repository.Migrations
                             ImageURL = "https://images.static-bluray.com/movies/covers/110039_large.jpg?t=1468393673",
                             Price = 8,
                             Title = "Aliens",
-                            TrailerURL = "https://youtu.be/oSeQQlaCZgU"
+                            TrailerURL = "https://www.youtube.com/watch?v=oSeQQlaCZgU"
                         },
                         new
                         {
@@ -76,7 +76,7 @@ namespace Webshop.Repository.Migrations
                             ImageURL = "https://images.static-bluray.com/movies/covers/201262_large.jpg?t=1521164675",
                             Price = 7,
                             Title = "Die Hard",
-                            TrailerURL = "https://youtu.be/jaJuwKCmJbY"
+                            TrailerURL = "https://www.youtube.com/watch?v=jaJuwKCmJbY"
                         },
                         new
                         {
@@ -85,7 +85,7 @@ namespace Webshop.Repository.Migrations
                             ImageURL = "https://images.static-bluray.com/movies/covers/143008_large.jpg?t=1445573391",
                             Price = 10,
                             Title = "Prometheus",
-                            TrailerURL = "https://youtu.be/5UEv03g51kU"
+                            TrailerURL = "https://www.youtube.com/watch?v=5UEv03g51kU"
                         },
                         new
                         {
@@ -94,7 +94,7 @@ namespace Webshop.Repository.Migrations
                             ImageURL = "https://images.static-bluray.com/movies/covers/24274_large.jpg?t=1452554093",
                             Price = 12,
                             Title = "Limitless",
-                            TrailerURL = "https://youtu.be/4TLppsfzQH8"
+                            TrailerURL = "https://www.youtube.com/watch?v=4TLppsfzQH8"
                         },
                         new
                         {
@@ -103,7 +103,7 @@ namespace Webshop.Repository.Migrations
                             ImageURL = "https://images.static-bluray.com/movies/covers/166_large.jpg?t=1391838335",
                             Price = 12,
                             Title = "Layer Cake",
-                            TrailerURL = "https://youtu.be/Yk4wX4FPRzE"
+                            TrailerURL = "https://www.youtube.com/watch?v=Yk4wX4FPRzE"
                         },
                         new
                         {
@@ -112,7 +112,7 @@ namespace Webshop.Repository.Migrations
                             ImageURL = "https://images.static-bluray.com/movies/covers/341691_large.jpg?t=1689180080",
                             Price = 20,
                             Title = "Mission Impossible: Dead Reckoning Part One",
-                            TrailerURL = "https://youtu.be/avz06PDqDbM"
+                            TrailerURL = "https://www.youtube.com/watch?v=avz06PDqDbM"
                         },
                         new
                         {
@@ -121,7 +121,7 @@ namespace Webshop.Repository.Migrations
                             ImageURL = "https://images.static-bluray.com/movies/covers/340118_large.jpg?t=1686942159",
                             Price = 28,
                             Title = "Star Trek: Picard - 3rd Season",
-                            TrailerURL = "https://youtu.be/DI9hty_iT4Q"
+                            TrailerURL = "https://www.youtube.com/watch?v=DI9hty_iT4Q"
                         },
                         new
                         {
@@ -130,7 +130,7 @@ namespace Webshop.Repository.Migrations
                             ImageURL = "https://images.static-bluray.com/movies/covers/123505_large.jpg?t=1456098039",
                             Price = 10,
                             Title = "The Hateful Eight",
-                            TrailerURL = "https://youtu.be/jEEp9fXgBiY"
+                            TrailerURL = "https://www.youtube.com/watch?v=jEEp9fXgBiY"
                         },
                         new
                         {
@@ -139,7 +139,7 @@ namespace Webshop.Repository.Migrations
                             ImageURL = "https://images.static-bluray.com/movies/covers/41888_large.jpg?t=0",
                             Price = 12,
                             Title = "The Fast and the Furious",
-                            TrailerURL = "https://youtu.be/2TAOizOnNPo"
+                            TrailerURL = "https://www.youtube.com/watch?v=2TAOizOnNPo"
                         },
                         new
                         {
@@ -148,7 +148,7 @@ namespace Webshop.Repository.Migrations
                             ImageURL = "https://images.static-bluray.com/movies/covers/348465_large.jpg?t=1699694249",
                             Price = 15,
                             Title = "No Time to Die",
-                            TrailerURL = "https://youtu.be/BIhNsAtPbPI"
+                            TrailerURL = "https://www.youtube.com/watch?v=BIhNsAtPbPI"
                         },
                         new
                         {
@@ -157,7 +157,7 @@ namespace Webshop.Repository.Migrations
                             ImageURL = "https://images.static-bluray.com/movies/covers/51265_large.jpg?t=1442152541",
                             Price = 10,
                             Title = "Man of Steel",
-                            TrailerURL = "https://youtu.be/OZfKfs0vIBw"
+                            TrailerURL = "https://www.youtube.com/watch?v=OZfKfs0vIBw"
                         });
                 });
 #pragma warning restore 612, 618

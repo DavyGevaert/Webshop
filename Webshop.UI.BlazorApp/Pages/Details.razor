@@ -1,0 +1,41 @@
+﻿@page "/Details/{blurayId:int}"
+
+@using Webshop.Model;
+@using Webshop.Sdk;
+
+@inject BlurayApi _blurayApi;
+
+@if (Bluray is null)
+{
+	<div>Loading...</div>
+}
+else
+{
+
+    <h3>@Bluray.Title</h3>
+
+    <p>@Bluray.Description</p>
+
+    <iframe width="1280" height="720"
+    src="@Bluray.TrailerURL">
+    </iframe>
+}
+
+@code {
+    [Parameter]
+    public int BlurayId { get; set; }
+
+    private Bluray Bluray { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadBluray();
+    }
+
+    private async Task LoadBluray()
+    {
+        Bluray = await _blurayApi.GetAsync(BlurayId);
+
+        Bluray.TrailerURL = Bluray.TrailerURL.Replace("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/");
+    }
+}
