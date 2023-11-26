@@ -48,7 +48,7 @@ namespace Webshop.Sdk
 
             httpResponse.EnsureSuccessStatusCode();
 
-            var result = await httpResponse.Content.ReadFromJsonAsync<IList<Bluray>>();
+            var result = await httpResponse.Content.ReadFromJsonAsync<List<Bluray>>();
 
             if (result is null)
             {

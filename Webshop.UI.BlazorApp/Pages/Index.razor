@@ -1,9 +1,46 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+@using Webshop.Model;
+@using Webshop.Sdk;
 
-<h1>Hello, world!</h1>
+@inject BlurayApi _blurayApi;
 
-Welcome to your new app.
+@if (Blurays is null)
+{
+	<div>Loading...</div>
+}
+else
+{
+	<table>
+		<tr>
+			@foreach (var bluray in Blurays)
+			{
+				<td>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+					<div>
+						<div class="center"><img class="card-img-top logo" src="@bluray.ImageURL" alt="@bluray.ImageURL"></div>
+						<div class="card-body">
+							<div class="center"><h5 class="card-title">@bluray.Title</h5></div>
+						</div>
+					</div>
+
+
+				</td>
+			}
+		</tr>
+	</table>
+}
+
+@code {
+    private IList<Bluray> Blurays { get; set; } = new List<Bluray>();
+
+	protected override async Task OnInitializedAsync()
+	{
+		await LoadBlurays();
+	}
+
+    private async Task LoadBlurays()
+    {
+        Blurays = await _blurayApi.FindAsync();
+    }
+}

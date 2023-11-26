@@ -2,7 +2,7 @@
 
 namespace Webshop.Api
 {
-    [ApiController]
+	[ApiController]
     [Route("[Controller]")]
     public class ApiBaseController : ControllerBase
     {
