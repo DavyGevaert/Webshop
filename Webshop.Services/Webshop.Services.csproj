@@ -9,7 +9,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Webshop.Repository\Webshop.Repository.csproj" />
     <ProjectReference Include="..\Webshop.Services.Abstractions\Webshop.Services.Abstractions.csproj" />
-    <ProjectReference Include="..\Webshop.Services.Model\Webshop.Services.Model.csproj" />
   </ItemGroup>
 
 </Project>

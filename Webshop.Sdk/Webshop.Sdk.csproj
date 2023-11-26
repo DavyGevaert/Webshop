@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Webshop.Sdk.Abstractions\Webshop.Sdk.Abstractions.csproj" />
-    <ProjectReference Include="..\Webshop.Services.Model\Webshop.Services.Model.csproj" />
   </ItemGroup>
 
 </Project>

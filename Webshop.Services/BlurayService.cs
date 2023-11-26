@@ -3,7 +3,6 @@ using Webshop.Model;
 using Webshop.Repository;
 using Webshop.Services.Abstractions;
 using Webshop.Services.Extensions;
-using Webshop.Services.Model.Results;
 
 namespace Webshop.Services
 {
@@ -16,42 +15,23 @@ namespace Webshop.Services
             _dbContext = dbContext;
         }
 
-        public BlurayResult Get(int id)
+        public Bluray Get(int id)
         {
-            var bluray = _dbContext.Blurays
-                .Select(b => new BlurayResult
-                {
-                    Id = b.Id,
-                    Title = b.Title,
-                    Description = b.Description,
-                    ImageURL = b.ImageURL,
-                    TrailerURL = b.TrailerURL,
-                    Price = b.Price
-                })
+            var bluray = _dbContext.Blurays                
                 .SingleOrDefault(p => p.Id == id);
 
             return bluray;
         }
 
-        public async Task<BlurayResult> GetAsync(int id)
+        public IList<Bluray> Find()
         {
-            var bluray = await _dbContext.Blurays
-                .ProjectToResult()
-                .SingleOrDefaultAsync(i => i.Id == id);
-
-            return bluray;
-        }
-
-        public async Task<IList<BlurayResult>> FindAsync()
-        {
-            var blurays = await _dbContext.Blurays
-                .ProjectToResult()
-                .ToListAsync();
+            var blurays = _dbContext.Blurays
+                .ToList();
 
             return blurays;
         }
 
-        public BlurayResult Create(BlurayResult bluray)
+        public Bluray Create(Bluray bluray)
         {
             var dbBluray = new Bluray
             {
@@ -69,7 +49,7 @@ namespace Webshop.Services
             return Get(bluray.Id);
         }
 
-        public BlurayResult Update(int id, BlurayResult bluray)
+        public Bluray Update(int id, Bluray bluray)
         {
             var dbBluray = _dbContext.Blurays
                             .SingleOrDefault(i => i.Id == id);

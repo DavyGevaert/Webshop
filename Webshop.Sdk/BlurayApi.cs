@@ -2,9 +2,8 @@
 using System.Text.Json;
 using System.Text;
 using Webshop.Sdk.Abstractions;
-using Webshop.Services.Model.Core;
-using Webshop.Services.Model.Results;
 using static System.Net.Mime.MediaTypeNames;
+using Webshop.Model;
 
 namespace Webshop.Sdk
 {
@@ -19,7 +18,7 @@ namespace Webshop.Sdk
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<ServiceResult<BlurayResult>> GetAsync(int id)
+        public async Task<Bluray> GetAsync(int id)
         {
             var httpClient = _httpClientFactory.CreateClient("Webshop");
 
@@ -29,17 +28,17 @@ namespace Webshop.Sdk
 
             httpResponse.EnsureSuccessStatusCode();
 
-            var result = await httpResponse.Content.ReadFromJsonAsync<ServiceResult<BlurayResult>>();
+            var result = await httpResponse.Content.ReadFromJsonAsync<Bluray>();
 
             if (result is null)
             {
-                return new ServiceResult<BlurayResult>();
+                return new Bluray();
             }
 
             return result;
         }
 
-        public async Task<ServiceResult<IList<BlurayResult>>> FindAsync()
+        public async Task<IList<Bluray>> FindAsync()
         {
             var httpClient = _httpClientFactory.CreateClient("Webshop");
 
@@ -49,17 +48,17 @@ namespace Webshop.Sdk
 
             httpResponse.EnsureSuccessStatusCode();
 
-            var result = await httpResponse.Content.ReadFromJsonAsync<ServiceResult<IList<BlurayResult>>>();
+            var result = await httpResponse.Content.ReadFromJsonAsync<IList<Bluray>>();
 
             if (result is null)
             {
-                return new ServiceResult<IList<BlurayResult>>();
+                return new List<Bluray>();
             }
 
             return result;
         }
 
-        public async Task CreateItemAsync(BlurayResult blurayResult)
+        public async Task CreateItemAsync(Bluray blurayResult)
         {
             var httpClient = _httpClientFactory.CreateClient("Webshop");
 
@@ -70,7 +69,7 @@ namespace Webshop.Sdk
             httpResponseMessage.EnsureSuccessStatusCode();
         }
 
-        public async Task SaveItemAsync(BlurayResult blurayResult)
+        public async Task SaveItemAsync(Bluray blurayResult)
         {
             var httpClient = _httpClientFactory.CreateClient("Webshop");
 

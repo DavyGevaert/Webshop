@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Webshop.Model;
-using Webshop.Services.Model.Results;
 
 namespace Webshop.Services.Extensions
 {
     public static class ProjectExtensions
     {
-        public static IQueryable<BlurayResult> ProjectToResult(this IQueryable<Bluray> query)
+        public static IQueryable<Bluray> ProjectToResult(this IQueryable<Bluray> query)
         {
-            return query.Select(b => new BlurayResult
+            return query.Select(b => new Bluray
             {
                 Id = b.Id,
                 Title = b.Title,

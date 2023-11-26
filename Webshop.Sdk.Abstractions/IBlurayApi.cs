@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Webshop.Services.Model.Core;
-using Webshop.Services.Model.Results;
+using Webshop.Model;
 
 namespace Webshop.Sdk.Abstractions
 {
     public interface IBlurayApi
     {
-        Task<ServiceResult<BlurayResult>> GetAsync(int id);
+        Task<Bluray> GetAsync(int id);
 
-        Task<ServiceResult<IList<BlurayResult>>> FindAsync();
+        Task<IList<Bluray>> FindAsync();
 
-        Task CreateItemAsync(BlurayResult blurayResult);
+        Task CreateItemAsync(Bluray blurayResult);
 
-        Task SaveItemAsync(BlurayResult blurayResult);
+        Task SaveItemAsync(Bluray blurayResult);
 
         Task DeleteItemAsync(int id);
     }

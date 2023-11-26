@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Webshop.Model;
 using Webshop.Services.Abstractions;
-using Webshop.Services.Model.Results;
 
 namespace Webshop.Api.Controllers
 {
@@ -16,28 +16,28 @@ namespace Webshop.Api.Controllers
         [HttpGet("Get")]
         public IActionResult Get(int id)
         {
-            var item = _blurayService.GetAsync(id);
+            var item = _blurayService.Get(id);
             return Ok(item);
         }
 
         [HttpGet("Find")]
-        public async Task<IActionResult> Find()
+        public IActionResult Find()
         {
-            var result = await _blurayService.FindAsync();
+            var result = _blurayService.Find();
 
             return Ok(result);
         }
 
 
         [HttpPost("Create")]
-        public IActionResult Create(BlurayResult bluray)
+        public IActionResult Create(Bluray bluray)
         {
             _blurayService.Create(bluray);
             return Ok(bluray);
         }
 
         [HttpPut("Update/{id}")]
-        public IActionResult Update([FromRoute] int id, [FromBody] BlurayResult bluray)
+        public IActionResult Update([FromRoute] int id, [FromBody] Bluray bluray)
         {
             var updatedBluray = _blurayService.Update(id, bluray);
             return Ok(updatedBluray);
