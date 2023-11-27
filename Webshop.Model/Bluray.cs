@@ -19,5 +19,7 @@ namespace Webshop.Model
         public string? TrailerURL { get; set; }
 
         public int Price { get; set; }
+
+        public int CurrentInStock { get; set; }
     }
 }

@@ -38,7 +38,8 @@ namespace Webshop.Services
                 Description = bluray.Description,
                 ImageURL = bluray.ImageURL,
                 TrailerURL = bluray.TrailerURL,
-                Price = bluray.Price
+                Price = bluray.Price,
+                CurrentInStock = bluray.CurrentInStock
             };
 
             _dbContext.Blurays.Add(dbBluray);
@@ -63,8 +64,10 @@ namespace Webshop.Services
             dbBluray.ImageURL = bluray.ImageURL;
             dbBluray.TrailerURL = bluray.TrailerURL;
             dbBluray.Price = bluray.Price;
+            dbBluray.CurrentInStock = bluray.CurrentInStock;
 
-            _dbContext.SaveChanges();
+
+			_dbContext.SaveChanges();
 
             return await GetAsync(dbBluray.Id);
         }
