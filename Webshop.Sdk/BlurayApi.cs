@@ -58,26 +58,26 @@ namespace Webshop.Sdk
             return result;
         }
 
-        public async Task CreateItemAsync(Bluray blurayResult)
+        public async Task CreateItemAsync(Bluray bluray)
         {
             var httpClient = _httpClientFactory.CreateClient("Webshop");
 
             var route = "/Blurays/Create";   // zelfde als route in Swagger UI
 
-            var blurayJson = new StringContent(JsonSerializer.Serialize(blurayResult), Encoding.UTF8, Application.Json); // using static System.Net.Mime.MediaTypeNames;
+            var blurayJson = new StringContent(JsonSerializer.Serialize(bluray), Encoding.UTF8, Application.Json); // using static System.Net.Mime.MediaTypeNames;
 
             var httpResponseMessage = await httpClient.PostAsync(route, blurayJson);
 
             httpResponseMessage.EnsureSuccessStatusCode();
         }
 
-        public async Task SaveItemAsync(Bluray blurayResult)
+        public async Task SaveItemAsync(Bluray bluray)
         {
             var httpClient = _httpClientFactory.CreateClient("Webshop");
 
-            var route = $"/Blurays/Update/{blurayResult.Id}";   // zelfde als route in Swagger UI
+            var route = $"/Blurays/Update/{bluray.Id}";   // zelfde als route in Swagger UI
 
-            var blurayJson = new StringContent(JsonSerializer.Serialize(blurayResult), Encoding.UTF8, Application.Json);
+            var blurayJson = new StringContent(JsonSerializer.Serialize(bluray), Encoding.UTF8, Application.Json);
 
             var httpResponseMessage = await httpClient.PutAsync(route, blurayJson);
 
