@@ -6,11 +6,22 @@
 
 <h3>Cart</h3>
 
-
-@foreach (var item in _cartState.SelectedItems)
-{
-	<p>@item.Title</p>
-}
+<h3 class="mb-5">Shopping Cart</h3>
+	<div class="row mb-5">
+		@foreach (var item in _cartState.SelectedItems)
+		{
+			<div class="row mb-4">
+				<div class="col-md-4">
+					<img src="@item.ImageURL" width="100" class="img-thumbnail">
+				</div>
+				<div class="col-md-8">
+					<h5>@item.Title</h5>
+					<div class="mb-4">@item.Description</div>
+					<span>Price: <b>@item.Price.ToString("C")</b></span>
+				</div>
+			</div>
+		}
+	</div>
 
 @code {
 
