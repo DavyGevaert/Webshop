@@ -4,6 +4,7 @@
 @using Webshop.Sdk;
 
 @inject BlurayApi _blurayApi;
+@inject CartState _cartState;
 
 @if (Blurays is null)
 {
@@ -30,6 +31,10 @@ else
 							<p class="card-text">
 								<b>@bluray.Price.ToString("C")</b>
 							</p>
+							<button class="btn btn-primary" type="button" 
+								@onclick="() => BuyItem(bluray.Id)">
+								Buy
+							</button>
 						</div>
 					</div>
 				</div>
@@ -39,15 +44,20 @@ else
 }
 
 @code {
-    private IList<Bluray> Blurays { get; set; } = new List<Bluray>();
+	private IList<Bluray> Blurays { get; set; } = new List<Bluray>();
 
 	protected override async Task OnInitializedAsync()
 	{
 		await LoadBlurays();
 	}
 
-    private async Task LoadBlurays()
-    {
-        Blurays = await _blurayApi.FindAsync();
-    }
+	private async Task LoadBlurays()
+	{
+		Blurays = await _blurayApi.FindAsync();
+	}
+
+	private async Task BuyItem(int id)
+	{
+		await _cartState.AddItemToCartAsync(id);
+	}
 }

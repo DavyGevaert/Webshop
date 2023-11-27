@@ -21,5 +21,6 @@ builder.Services.AddHttpClient("Webshop", options =>
 });
 
 builder.Services.AddTransient<BlurayApi>();
+builder.Services.AddScoped<CartState>();
 
 await builder.Build().RunAsync();

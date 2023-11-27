@@ -1,0 +1,19 @@
+﻿@page "/cart"
+
+@using Webshop.Model;
+@using Webshop.Sdk;
+
+@inject CartState _cartState;
+
+<h3>Cart</h3>
+
+
+@foreach (var item in _cartState.SelectedItems)
+	{
+				
+				<p>@item.Title</p>
+	}
+
+@code {
+
+}
