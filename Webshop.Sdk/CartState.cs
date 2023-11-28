@@ -18,7 +18,7 @@ namespace Webshop.Sdk
 		{
 			if (Basket.Any(b => b.Id == item.Id) is false)
 			{
-
+				// only one same item can be added to Basket
 				Basket.Add(item);
 			}
 
