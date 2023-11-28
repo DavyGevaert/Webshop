@@ -25,6 +25,8 @@ namespace Webshop.Repository
 
         public DbSet<Item> Items { get; set; }
 
+        public DbSet<CartItem> CartItems { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
