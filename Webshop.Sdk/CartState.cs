@@ -7,26 +7,36 @@ namespace Webshop.Sdk
 	{
 		private readonly ItemApi _itemApi;
 
-		public IList<Item> SelectedItems { get; set; } = new List<Item>();
+		public IList<Item> Basket { get; set; } = new List<Item>();
 
 		public CartState(ItemApi itemApi)
 		{
             _itemApi = itemApi;
 		}
 
-		public async Task AddItemToCartAsync(int Id)
+		public async Task AddItemToBasketAsync(int Id)
 		{
-			if (SelectedItems.Any(b => b.Id == Id) is false)
+			if (Basket.Any(b => b.Id == Id) is false)
 			{
 				var cartItem = await _itemApi.GetAsync(Id);
 
-				SelectedItems.Add(cartItem);
+				Basket.Add(cartItem);
 			}
 		}
 
-		public IList<Item> GetCartItems()
+		public IList<Item> GetBasket()
 		{
-			return SelectedItems;
+			return Basket;
+		}
+
+		public void Checkout()
+		{
+			throw new NotImplementedException();
+		}
+
+		public int UpdateStock(int minusQuantity)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }
