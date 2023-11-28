@@ -7,79 +7,79 @@ using Webshop.Model;
 
 namespace Webshop.Sdk
 {
-    public class BlurayApi : IBlurayApi
+    public class ItemApi : IItemApi
     {
         // https://learn.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-8.0
 
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public BlurayApi(IHttpClientFactory httpClientFactory)
+        public ItemApi(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<Bluray> GetAsync(int id)
+        public async Task<Item> GetAsync(int id)
         {
             var httpClient = _httpClientFactory.CreateClient("Webshop");
 
-            var route = $"/Blurays/Get?id={id}";   // zelfde als route in Swagger UI
+            var route = $"/Items/Get?id={id}";   // zelfde als route in Swagger UI
 
             var httpResponse = await httpClient.GetAsync(route);
 
             httpResponse.EnsureSuccessStatusCode();
 
-            var result = await httpResponse.Content.ReadFromJsonAsync<Bluray>();
+            var result = await httpResponse.Content.ReadFromJsonAsync<Item>();
 
             if (result is null)
             {
-                return new Bluray();
+                return new Item();
             }
 
             return result;
         }
 
-        public async Task<IList<Bluray>> FindAsync()
+        public async Task<IList<Item>> FindAsync()
         {
             var httpClient = _httpClientFactory.CreateClient("Webshop");
 
-            var route = "/Blurays/Find";   // zelfde als route in Swagger UI
+            var route = "/Items/Find";   // zelfde als route in Swagger UI
 
             var httpResponse = await httpClient.GetAsync(route);
 
             httpResponse.EnsureSuccessStatusCode();
 
-            var result = await httpResponse.Content.ReadFromJsonAsync<List<Bluray>>();
+            var result = await httpResponse.Content.ReadFromJsonAsync<List<Item>>();
 
             if (result is null)
             {
-                return new List<Bluray>();
+                return new List<Item>();
             }
 
             return result;
         }
 
-        public async Task CreateItemAsync(Bluray bluray)
+        public async Task CreateItemAsync(Item item)
         {
             var httpClient = _httpClientFactory.CreateClient("Webshop");
 
-            var route = "/Blurays/Create";   // zelfde als route in Swagger UI
+            var route = "/Items/Create";   // zelfde als route in Swagger UI
 
-            var blurayJson = new StringContent(JsonSerializer.Serialize(bluray), Encoding.UTF8, Application.Json); // using static System.Net.Mime.MediaTypeNames;
+            var itemJson = new StringContent(JsonSerializer.Serialize(item), Encoding.UTF8, Application.Json); // using static System.Net.Mime.MediaTypeNames;
 
-            var httpResponseMessage = await httpClient.PostAsync(route, blurayJson);
+            var httpResponseMessage = await httpClient.PostAsync(route, itemJson);
 
             httpResponseMessage.EnsureSuccessStatusCode();
         }
 
-        public async Task SaveItemAsync(Bluray bluray)
+        public async Task SaveItemAsync(Item item)
         {
             var httpClient = _httpClientFactory.CreateClient("Webshop");
 
-            var route = $"/Blurays/Update/{bluray.Id}";   // zelfde als route in Swagger UI
+            var route = $"/Items/Update/{item.Id}";   // zelfde als route in Swagger UI
 
-            var blurayJson = new StringContent(JsonSerializer.Serialize(bluray), Encoding.UTF8, Application.Json);
+            var itemJson = new StringContent(JsonSerializer.Serialize(item), Encoding.UTF8, Application.Json);
 
-            var httpResponseMessage = await httpClient.PutAsync(route, blurayJson);
+            var httpResponseMessage = await httpClient.PutAsync(route, itemJson);
 
             httpResponseMessage.EnsureSuccessStatusCode();
         }
@@ -88,7 +88,7 @@ namespace Webshop.Sdk
         {
             var httpClient = _httpClientFactory.CreateClient("Webshop");
 
-            var route = $"/Blurays/Delete?id={id}";   // zelfde als route in Swagger UI
+            var route = $"/Items/Delete?id={id}";   // zelfde als route in Swagger UI
 
             using var httpResponseMessage = await httpClient.DeleteAsync(route);
 

@@ -23,7 +23,7 @@ namespace Webshop.Repository
 
         }
 
-        public DbSet<Bluray> Blurays { get; set; }
+        public DbSet<Item> Items { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -35,8 +35,8 @@ namespace Webshop.Repository
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Bluray>().HasData(
-                new Bluray
+            modelBuilder.Entity<Item>().HasData(
+                new Item
                 {
                     Id = 1,
                     Title = "Predator",
@@ -46,7 +46,7 @@ namespace Webshop.Repository
                     Price = 7,
                     CurrentInStock = 7
                 },
-                new Bluray
+                new Item
                 {
                     Id = 2,
                     Title = "Aliens",
@@ -56,7 +56,7 @@ namespace Webshop.Repository
                     Price = 8,
 					CurrentInStock = 7
 				},
-                new Bluray
+                new Item
                 {
                     Id = 3,
                     Title = "Die Hard",
@@ -66,7 +66,7 @@ namespace Webshop.Repository
                     Price = 7,
 					CurrentInStock = 7
 				},
-                new Bluray
+                new Item
                 {
                     Id = 4,
                     Title = "Prometheus",
@@ -76,7 +76,7 @@ namespace Webshop.Repository
                     Price = 10,
 					CurrentInStock = 7
 				},
-                new Bluray
+                new Item
                 {
                     Id = 5,
                     Title = "Limitless",
@@ -86,7 +86,7 @@ namespace Webshop.Repository
                     Price = 12,
 					CurrentInStock = 7
 				},
-                new Bluray
+                new Item
                 {
                     Id = 6,
                     Title = "Layer Cake",
@@ -96,7 +96,7 @@ namespace Webshop.Repository
                     Price = 12,
 					CurrentInStock = 10
 				},
-                new Bluray
+                new Item
                 {
                     Id = 7,
                     Title = "Mission Impossible: Dead Reckoning Part One",
@@ -106,7 +106,7 @@ namespace Webshop.Repository
                     Price = 20,
 					CurrentInStock = 20
 				},
-                new Bluray
+                new Item
                 {
                     Id = 8,
                     Title = "Star Trek: Picard - 3rd Season",
@@ -116,7 +116,7 @@ namespace Webshop.Repository
                     Price = 28,
 					CurrentInStock = 20
 				},
-                new Bluray
+                new Item
                 {
                     Id = 9,
                     Title = "The Hateful Eight",
@@ -126,7 +126,7 @@ namespace Webshop.Repository
                     Price = 10,
 					CurrentInStock = 12
 				},
-                new Bluray
+                new Item
                 {
                     Id = 10,
                     Title = "The Fast and the Furious",
@@ -136,7 +136,7 @@ namespace Webshop.Repository
                     Price = 12,
 					CurrentInStock = 12
 				},
-                new Bluray
+                new Item
                 {
                     Id = 11,
                     Title = "No Time to Die",
@@ -146,7 +146,7 @@ namespace Webshop.Repository
                     Price = 15,
 					CurrentInStock = 15
 				},
-                new Bluray
+                new Item
                 {
                     Id = 12,
                     Title = "Man of Steel",

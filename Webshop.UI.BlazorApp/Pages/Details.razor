@@ -1,41 +1,41 @@
-﻿@page "/Details/{blurayId:int}"
+﻿@page "/Details/{itemId:int}"
 
 @using Webshop.Model;
 @using Webshop.Sdk;
 
-@inject BlurayApi _blurayApi;
+@inject ItemApi _itemApi;
 
-@if (Bluray is null)
+@if (Item is null)
 {
 	<div>Loading...</div>
 }
 else
 {
 
-    <h3>@Bluray.Title</h3>
+    <h3>@Item.Title</h3>
 
-    <p>@Bluray.Description</p>
+    <p>@Item.Description</p>
 
     <iframe width="1280" height="720"
-    src="@Bluray.TrailerURL">
+            src="@Item.TrailerURL">
     </iframe>
 }
 
 @code {
     [Parameter]
-    public int BlurayId { get; set; }
+    public int ItemId { get; set; }
 
-    private Bluray Bluray { get; set; }
+    private Item Item { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        await LoadBluray();
+        await LoadItem();
     }
 
-    private async Task LoadBluray()
+    private async Task LoadItem()
     {
-        Bluray = await _blurayApi.GetAsync(BlurayId);
+        Item = await _itemApi.GetAsync(ItemId);
 
-        Bluray.TrailerURL = Bluray.TrailerURL.Replace("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/");
+        Item.TrailerURL = Item.TrailerURL.Replace("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/");
     }
 }

@@ -11,7 +11,7 @@ using Webshop.Repository;
 namespace Webshop.Repository.Migrations
 {
     [DbContext(typeof(WebshopDbContext))]
-    [Migration("20231127121728_initial")]
+    [Migration("20231128135351_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,7 @@ namespace Webshop.Repository.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Webshop.Model.Bluray", b =>
+            modelBuilder.Entity("Webshop.Model.Item", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,7 +51,7 @@ namespace Webshop.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Blurays");
+                    b.ToTable("Items");
 
                     b.HasData(
                         new

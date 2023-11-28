@@ -9,7 +9,7 @@ namespace Webshop.Repository.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Blurays",
+                name: "Items",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -23,11 +23,11 @@ namespace Webshop.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Blurays", x => x.Id);
+                    table.PrimaryKey("PK_Items", x => x.Id);
                 });
 
             migrationBuilder.InsertData(
-                table: "Blurays",
+                table: "Items",
                 columns: new[] { "Id", "CurrentInStock", "Description", "ImageURL", "Price", "Title", "TrailerURL" },
                 values: new object[,]
                 {
@@ -49,7 +49,7 @@ namespace Webshop.Repository.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Blurays");
+                name: "Items");
         }
     }
 }

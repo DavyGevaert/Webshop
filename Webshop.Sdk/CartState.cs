@@ -5,26 +5,26 @@ namespace Webshop.Sdk
 {
 	public class CartState : ICartState
 	{
-		private readonly BlurayApi _blurayApi;
+		private readonly ItemApi _itemApi;
 
-		public IList<Bluray> SelectedItems { get; set; } = new List<Bluray>();
+		public IList<Item> SelectedItems { get; set; } = new List<Item>();
 
-		public CartState(BlurayApi blurayApi)
+		public CartState(ItemApi itemApi)
 		{
-			_blurayApi = blurayApi;
+            _itemApi = itemApi;
 		}
 
 		public async Task AddItemToCartAsync(int Id)
 		{
 			if (SelectedItems.Any(b => b.Id == Id) is false)
 			{
-				var cartItem = await _blurayApi.GetAsync(Id);
+				var cartItem = await _itemApi.GetAsync(Id);
 
 				SelectedItems.Add(cartItem);
 			}
 		}
 
-		public IList<Bluray> GetCartItems()
+		public IList<Item> GetCartItems()
 		{
 			return SelectedItems;
 		}

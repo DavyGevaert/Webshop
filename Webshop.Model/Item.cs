@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Webshop.Model
 {
-    public class Bluray
+    public class Item
     {
         public int Id { get; set; }
 

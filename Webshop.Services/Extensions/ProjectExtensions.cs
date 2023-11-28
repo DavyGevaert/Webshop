@@ -9,9 +9,9 @@ namespace Webshop.Services.Extensions
 {
     public static class ProjectExtensions
     {
-        public static IQueryable<Bluray> ProjectToResult(this IQueryable<Bluray> query)
+        public static IQueryable<Item> ProjectToResult(this IQueryable<Item> query)
         {
-            return query.Select(b => new Bluray
+            return query.Select(b => new Item
             {
                 Id = b.Id,
                 Title = b.Title,

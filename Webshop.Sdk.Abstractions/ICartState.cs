@@ -11,6 +11,6 @@ namespace Webshop.Sdk.Abstractions
 	{
 		Task AddItemToCartAsync(int id);
 
-		IList<Bluray> GetCartItems();
+		IList<Item> GetCartItems();
 	}
 }

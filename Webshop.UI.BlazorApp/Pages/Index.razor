@@ -3,10 +3,10 @@
 @using Webshop.Model;
 @using Webshop.Sdk;
 
-@inject BlurayApi _blurayApi;
+@inject ItemApi _itemApi;
 @inject CartState _cartState;
 
-@if (Blurays is null)
+@if (Items is null)
 {
 	<div>Loading...</div>
 }
@@ -14,25 +14,25 @@ else
 {
 	<div class="container-fluid content-row">
 		<div class="row">
-			@foreach (var bluray in Blurays)
+			@foreach (var item in Items)
 			{
 				<div class="col-lg-3 col-md-6" style="margin-bottom: 20px;">
 					<div class="card h-100" style="width: 20rem;">
                         <p style="text-align:center; margin-top: 20px">
-						<img class="img-thumbnail" src="@bluray.ImageURL" alt="@bluray.ImageURL"
+							<img class="img-thumbnail" src="@item.ImageURL" alt="@item.ImageURL"
 								height="250px" width="200px"
 						>
 						</p>
 								
 						<div class="card-body text-center">
 							<h5 class="card-title mb-3">
-								<a href="/details/@bluray.Id">@bluray.Title</a>
+								<a href="/details/@item.Id">@item.Title</a>
 							</h5>
 							<p class="card-text">
-								<b>@bluray.Price.ToString("C")</b>
+								<b>@item.Price.ToString("C")</b>
 							</p>
-							<button class="btn btn-primary" type="button" 
-								@onclick="() => BuyItem(bluray.Id)">
+							<button class="btn btn-primary" type="button"
+								@onclick="() => BuyItem(item.Id)">
 								Buy
 							</button>
 						</div>
@@ -44,16 +44,16 @@ else
 }
 
 @code {
-	private IList<Bluray> Blurays { get; set; } = new List<Bluray>();
+	private IList<Item> Items { get; set; } = new List<Item>();
 
 	protected override async Task OnInitializedAsync()
 	{
-		await LoadBlurays();
+		await LoadItems();
 	}
 
-	private async Task LoadBlurays()
+	private async Task LoadItems()
 	{
-		Blurays = await _blurayApi.FindAsync();
+		Items = await _itemApi.FindAsync();
 	}
 
 	private async Task BuyItem(int id)

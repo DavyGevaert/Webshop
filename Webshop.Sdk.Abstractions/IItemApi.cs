@@ -7,15 +7,15 @@ using Webshop.Model;
 
 namespace Webshop.Sdk.Abstractions
 {
-    public interface IBlurayApi
+    public interface IItemApi
     {
-        Task<Bluray> GetAsync(int id);
+        Task<Item> GetAsync(int id);
 
-        Task<IList<Bluray>> FindAsync();
+        Task<IList<Item>> FindAsync();
 
-        Task CreateItemAsync(Bluray blurayResult);
+        Task CreateItemAsync(Item item);
 
-        Task SaveItemAsync(Bluray blurayResult);
+        Task SaveItemAsync(Item item);
 
         Task DeleteItemAsync(int id);
     }

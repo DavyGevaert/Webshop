@@ -7,12 +7,12 @@ using Webshop.Model;
 
 namespace Webshop.Services.Abstractions
 {
-    public interface IBlurayService
+    public interface IItemService
     {
-        Task<Bluray> GetAsync(int id);
-        Task<IList<Bluray>> FindAsync();
-        Task<Bluray> Create(Bluray item);
-        Task<Bluray> Update(int id, Bluray item);
+        Task<Item> GetAsync(int id);
+        Task<IList<Item>> FindAsync();
+        Task<Item> Create(Item item);
+        Task<Item> Update(int id, Item item);
         bool Delete(int id);
     }
 }

@@ -12,7 +12,7 @@ builder.Services.AddDbContext<WebshopDbContext>();
 
 builder.Services.AddControllers();
 
-builder.Services.AddTransient<IBlurayService, BlurayService>();
+builder.Services.AddTransient<IItemService, ItemService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

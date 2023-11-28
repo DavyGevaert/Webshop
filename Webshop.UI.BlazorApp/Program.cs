@@ -20,7 +20,7 @@ builder.Services.AddHttpClient("Webshop", options =>
     options.BaseAddress = new Uri(settings.ApiBaseUrl);
 });
 
-builder.Services.AddTransient<BlurayApi>();
+builder.Services.AddTransient<ItemApi>();
 builder.Services.AddScoped<CartState>();    // this has to be addscoped, if it is addtransient the cart will not show simply because the SelectedItems generate a new instance when going to the cart page
 
 await builder.Build().RunAsync();
