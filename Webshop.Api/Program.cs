@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Webshop.Api.Settings;
 using Webshop.Repository;
 using Webshop.Services;
 using Webshop.Services.Abstractions;
@@ -6,7 +9,14 @@ string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<WebshopDbContext>();
+var settings = new AppSettings();
+builder.Configuration.GetSection(nameof(AppSettings)).Bind(settings);
+builder.Services.AddSingleton(settings);
+
+builder.Services.AddDbContext<WebshopDbContext>(options =>
+{
+	options.UseSqlServer(settings.ConnectionString);
+});
 
 // Add services to the container.
 
