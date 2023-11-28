@@ -11,8 +11,8 @@ using Webshop.Repository;
 namespace Webshop.Repository.Migrations
 {
     [DbContext(typeof(WebshopDbContext))]
-    [Migration("20231128135351_initial")]
-    partial class initial
+    [Migration("20231128170352_inital")]
+    partial class inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,10 @@ namespace Webshop.Repository.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ImageURL")
                         .HasColumnType("nvarchar(max)");
 
@@ -52,6 +56,8 @@ namespace Webshop.Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Items");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Item");
 
                     b.HasData(
                         new
@@ -174,6 +180,16 @@ namespace Webshop.Repository.Migrations
                             Title = "Man of Steel",
                             TrailerURL = "https://www.youtube.com/watch?v=OZfKfs0vIBw"
                         });
+                });
+
+            modelBuilder.Entity("Webshop.Model.CartItem", b =>
+                {
+                    b.HasBaseType("Webshop.Model.Item");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasDiscriminator().HasValue("CartItem");
                 });
 #pragma warning restore 612, 618
         }
