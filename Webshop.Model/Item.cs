@@ -22,6 +22,6 @@ namespace Webshop.Model
 
         public int CurrentInStock { get; set; }
 
-        public int Quantity = 0;
+        public int Quantity { get; set; }
     }
 }

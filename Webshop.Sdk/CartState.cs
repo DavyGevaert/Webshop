@@ -14,14 +14,15 @@ namespace Webshop.Sdk
             _itemApi = itemApi;
 		}
 
-		public async Task AddItemToBasketAsync(int Id)
+		public async Task AddItemToBasketAsync(Item item)
 		{
-			if (Basket.Any(b => b.Id == Id) is false)
+			if (Basket.Any(b => b.Id == item.Id) is false)
 			{
-				var cartItem = await _itemApi.GetAsync(Id);
 
-				Basket.Add(cartItem);
+				Basket.Add(item);
 			}
+
+			item.Quantity += 1;
 		}
 
 		public IList<Item> GetBasket()
@@ -29,14 +30,17 @@ namespace Webshop.Sdk
 			return Basket;
 		}
 
-		public void Checkout()
+		public async Task UpdateStock()
 		{
-			throw new NotImplementedException();
-		}
+			foreach (var item in Basket)
+			{
+				// adjust current stock minus quantity
+				item.CurrentInStock -= item.Quantity;
 
-		public int UpdateStock(int minusQuantity)
-		{
-			throw new NotImplementedException();
+				// save new stock on each item in Web Api
+				await _itemApi.SaveItemAsync(item);
+
+			}
 		}
 	}
 }

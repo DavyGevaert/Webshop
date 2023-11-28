@@ -4,6 +4,7 @@
 @using Webshop.Sdk;
 
 @inject CartState _cartState;
+@inject NavigationManager NavManager
 
 <h3>Shopping Cart</h3>
 
@@ -27,6 +28,7 @@
 			</div>
 		</div>
 	}
+	<button @onclick="() => Checkout()">Checkout</button>
 
 @code {
 	void Increment(Item item, int addOne)
@@ -44,5 +46,17 @@
 		{
 			item.Quantity -= 1;
 		}
+	}
+
+	async Task Checkout()
+	{
+		// update stock in Web Api
+		await _cartState.UpdateStock();
+
+		// start with a new List<Item> for a new basket
+		_cartState.Basket = new List<Item>();
+
+		// redirect to Home Page
+		NavManager.NavigateTo("/");
 	}
 }
