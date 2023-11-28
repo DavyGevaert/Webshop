@@ -18,14 +18,15 @@
 					<h5>@item.Title</h5>
 					<div class="mb-4">@item.Description</div>
 					<span>Price: <b>@item.Price.ToString("C")</b></span>
+					<div>
+						<a class="btn btn-warning" @onclick="() => Decrement(item, 1)">- 1</a>
+						<a class="btn btn-success" @onclick="() => Increment(item, 1)">+ 1</a>
+					</div>
+					<div>
+						Quantity: @item.Quantity
+					</div>
 			</div>
-			<div>
-				<a class="btn btn-warning" @onclick="() => Decrement(item, 1)">- 1</a>
-				<a class="btn btn-success" @onclick="() => Increment(item, 1)">+ 1</a>
-			</div>
-			<div>
-				Quantity: @item.Quantity
-			</div>
+			
 		</div>
 	}
 	<button @onclick="() => Checkout()">Checkout</button>
