@@ -14,7 +14,7 @@ namespace Webshop.Sdk
             _itemApi = itemApi;
 		}
 
-		public void AddItemToBasketAsync(Item item)
+		public void AddItemToBasket(Item item)
 		{
 			if (Basket.Any(b => b.Id == item.Id) is false)
 			{
