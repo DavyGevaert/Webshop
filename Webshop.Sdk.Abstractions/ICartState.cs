@@ -9,7 +9,7 @@ namespace Webshop.Sdk.Abstractions
 {
 	public interface ICartState
 	{
-		Task AddItemToBasketAsync(Item item);
+		void AddItemToBasketAsync(Item item);
 
 		IList<Item> GetBasket();
 

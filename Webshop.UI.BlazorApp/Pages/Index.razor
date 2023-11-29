@@ -59,8 +59,8 @@ else
 		Items = await _itemApi.FindAsync();
 	}
 
-	private async Task BuyItem(Item item)
-	{
-		await _cartState.AddItemToBasketAsync(item);
+	private void BuyItem(Item item)
+	{					
+		_cartState.AddItemToBasketAsync(item);
 	}
 }
