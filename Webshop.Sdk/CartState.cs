@@ -29,11 +29,6 @@ namespace Webshop.Sdk
 			}			
         }
 
-		public IList<Item> GetBasket()
-		{
-			return Basket;
-		}
-
 		public async Task UpdateStock()
 		{
 			foreach (var item in Basket)

@@ -11,8 +11,6 @@ namespace Webshop.Sdk.Abstractions
 	{
 		void AddItemToBasketAsync(Item item);
 
-		IList<Item> GetBasket();
-
 		Task UpdateStock();
 	}
 }
