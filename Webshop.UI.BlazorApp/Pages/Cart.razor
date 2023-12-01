@@ -23,18 +23,22 @@
 						<a class="btn btn-success" @onclick="() => Increment(item)">+ 1</a>
 					</div>
 					<div>
-						Quantity: @item.Quantity
+				Quantity: @item.Quantity | Price: @((item.Quantity * item.Price).ToString("c"))
 					</div>
 			</div>
 			
 		</div>
 	}
+	<div>Total price basket: @TotalPrice()</div>
+	<br/>
+	<br/>
 	<button @onclick="() => Checkout()">Checkout</button>
 
 @code {
 	void Increment(Item item)
 	{
 		item.Quantity += 1;
+		TotalPrice();
 	}
 
 	void Decrement(Item item)
@@ -42,10 +46,12 @@
 		if (item.Quantity <= 0)
 		{
 			RemoveItemFromBasket_If_Customer_Decrement_Quantity_Below_0(item);
+			TotalPrice();
 		}
 		else
 		{
 			item.Quantity -= 1;
+			TotalPrice();
 		}
 	}
 
@@ -64,5 +70,17 @@
 	void RemoveItemFromBasket_If_Customer_Decrement_Quantity_Below_0(Item item)
 	{
 		_cartState.Basket.Remove(item);
+	}
+
+	string TotalPrice()
+	{
+		var totalPrice = 0;
+
+		foreach(var item in _cartState.Basket)
+		{
+			totalPrice += (item.Price * item.Quantity);
+		}
+
+		return totalPrice.ToString("c");
 	}
 }
