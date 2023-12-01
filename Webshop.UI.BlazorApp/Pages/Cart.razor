@@ -15,16 +15,18 @@
 					<img src="@item.ImageURL" width="200" class="img-thumbnail">
 			</div>
 			<div class="col">
-					<h5>@item.Title</h5>
-					<div class="mb-4">@item.Description</div>
-					<span>Price: <b>@item.Price.ToString("C")</b></span>
-					<div>
-						<a class="btn btn-warning" @onclick="() => Decrement(item)">- 1</a>
-						<a class="btn btn-success" @onclick="() => Increment(item)">+ 1</a>
-					</div>
-					<div>
-				Quantity: @item.Quantity | Price: @((item.Quantity * item.Price).ToString("c"))
-					</div>
+				<h5>
+					<a href="/details/@item.Id">@item.Title</a>
+				</h5>
+				<div class="mb-4">@item.Description</div>
+				<span>Price: <b>@item.Price.ToString("C")</b></span>
+				<div>
+					<a class="btn btn-warning" @onclick="() => Decrement(item)">- 1</a>
+					<a class="btn btn-success" @onclick="() => Increment(item)">+ 1</a>
+				</div>
+				<div>
+					Quantity: @item.Quantity | Price: @((item.Quantity * item.Price).ToString("c"))
+				</div>
 			</div>
 			
 		</div>
