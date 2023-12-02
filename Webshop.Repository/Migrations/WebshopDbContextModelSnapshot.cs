@@ -29,6 +29,10 @@ namespace Webshop.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("ButtonText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("CurrentInStock")
                         .HasColumnType("int");
 
@@ -37,6 +41,9 @@ namespace Webshop.Repository.Migrations
 
                     b.Property<string>("ImageURL")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("OutOfStock")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Price")
                         .HasColumnType("int");
@@ -58,9 +65,11 @@ namespace Webshop.Repository.Migrations
                         new
                         {
                             Id = 1,
+                            ButtonText = "Buy",
                             CurrentInStock = 7,
                             Description = "Arnold Schwarzenegger stars as Dutch Schaefer, the leader of an elite paramilitary rescue team on a mission to save hostages in guerrilla-held territory in a Central American rainforest, who encounter the deadly Predator (Kevin Peter Hall), a skilled, technologically advanced alien who stalks and hunts them down.",
                             ImageURL = "https://images.static-bluray.com/movies/covers/207590_large.jpg?t=1529471856",
+                            OutOfStock = false,
                             Price = 7,
                             Quantity = 0,
                             Title = "Predator",
@@ -69,9 +78,11 @@ namespace Webshop.Repository.Migrations
                         new
                         {
                             Id = 2,
+                            ButtonText = "Buy",
                             CurrentInStock = 7,
                             Description = "Set in the far future, it stars Sigourney Weaver as Ellen Ripley, the sole survivor of an alien attack on her ship. When communications are lost with a human colony on the moon where her crew first saw the alien creatures, Ripley agrees to return to the site with a unit of Colonial Marines to investigate.",
                             ImageURL = "https://images.static-bluray.com/movies/covers/110039_large.jpg?t=1468393673",
+                            OutOfStock = false,
                             Price = 8,
                             Quantity = 0,
                             Title = "Aliens",
@@ -80,9 +91,11 @@ namespace Webshop.Repository.Migrations
                         new
                         {
                             Id = 3,
+                            ButtonText = "Buy",
                             CurrentInStock = 7,
                             Description = "A New York City police officer tries to save his estranged wife and several others taken hostage by terrorists during a Christmas party at the Nakatomi Plaza in Los Angeles.",
                             ImageURL = "https://images.static-bluray.com/movies/covers/201262_large.jpg?t=1521164675",
+                            OutOfStock = false,
                             Price = 7,
                             Quantity = 0,
                             Title = "Die Hard",
@@ -91,9 +104,11 @@ namespace Webshop.Repository.Migrations
                         new
                         {
                             Id = 4,
+                            ButtonText = "Buy",
                             CurrentInStock = 7,
                             Description = "Following clues to the origin of mankind, a team finds a structure on a distant moon, but they soon realize they are not alone.",
                             ImageURL = "https://images.static-bluray.com/movies/covers/143008_large.jpg?t=1445573391",
+                            OutOfStock = false,
                             Price = 10,
                             Quantity = 0,
                             Title = "Prometheus",
@@ -102,9 +117,11 @@ namespace Webshop.Repository.Migrations
                         new
                         {
                             Id = 5,
+                            ButtonText = "Buy",
                             CurrentInStock = 7,
                             Description = "The story follows a writer who takes an experimental drug that increases mental ability, allowing him to become a high-powered business broker, but his success comes at a price and is full of danger. Bradley Cooper, Robert De Niro, and Abbie Cornish lead the cast and give fairly strong performances.",
                             ImageURL = "https://images.static-bluray.com/movies/covers/24274_large.jpg?t=1452554093",
+                            OutOfStock = false,
                             Price = 12,
                             Quantity = 0,
                             Title = "Limitless",
@@ -113,9 +130,11 @@ namespace Webshop.Repository.Migrations
                         new
                         {
                             Id = 6,
+                            ButtonText = "Buy",
                             CurrentInStock = 10,
                             Description = "A successful cocaine dealer gets two tough assignments from his boss on the eve of his planned early retirement. An unnamed drug-dealer (Daniel Craig) has always had his priorities straight: he wants to quit while he's ahead.",
                             ImageURL = "https://images.static-bluray.com/movies/covers/166_large.jpg?t=1391838335",
+                            OutOfStock = false,
                             Price = 12,
                             Quantity = 0,
                             Title = "Layer Cake",
@@ -124,9 +143,11 @@ namespace Webshop.Repository.Migrations
                         new
                         {
                             Id = 7,
+                            ButtonText = "Buy",
                             CurrentInStock = 20,
                             Description = "Ethan Hunt (Tom Cruise) and his IMF team embark on their most dangerous mission yet: To track down a terrifying new weapon that threatens all of humanity before it falls into the wrong hands.",
                             ImageURL = "https://images.static-bluray.com/movies/covers/341691_large.jpg?t=1689180080",
+                            OutOfStock = false,
                             Price = 20,
                             Quantity = 0,
                             Title = "Mission Impossible: Dead Reckoning Part One",
@@ -135,9 +156,11 @@ namespace Webshop.Repository.Migrations
                         new
                         {
                             Id = 8,
+                            ButtonText = "Buy",
                             CurrentInStock = 20,
                             Description = "The third and final season of the American television series Star Trek: Picard features the character Jean-Luc Picard in the year 2401 as he reunites with the former command crew of the USS Enterprise (Geordi La Forge, Worf, William Riker, Beverly Crusher, Deanna Troi, and Data) while facing a mysterious enemy who is hunting Picard's son.",
                             ImageURL = "https://images.static-bluray.com/movies/covers/340118_large.jpg?t=1686942159",
+                            OutOfStock = false,
                             Price = 28,
                             Quantity = 0,
                             Title = "Star Trek: Picard - 3rd Season",
@@ -146,9 +169,11 @@ namespace Webshop.Repository.Migrations
                         new
                         {
                             Id = 9,
+                            ButtonText = "Buy",
                             CurrentInStock = 12,
                             Description = "In the dead of a Wyoming winter, a bounty hunter and his prisoner find shelter in a cabin currently inhabited by a collection of nefarious characters. Years after the American Civil War, bounty hunter Major Marquis Warren is transporting three dead bounties to the town of Red Rock, Wyoming.",
                             ImageURL = "https://images.static-bluray.com/movies/covers/123505_large.jpg?t=1456098039",
+                            OutOfStock = false,
                             Price = 10,
                             Quantity = 0,
                             Title = "The Hateful Eight",
@@ -157,9 +182,11 @@ namespace Webshop.Repository.Migrations
                         new
                         {
                             Id = 10,
+                            ButtonText = "Buy",
                             CurrentInStock = 12,
                             Description = "A heist crew driving three heavily modified Honda Civics hijack a semi-truck trailer carrying electronic goods and escape into the night along Terminal Island Freeway. Meanwhile, LAPD officer Brian O'Conner is sent undercover as part of a joint LAPD-FBI task force to locate the crew responsible.",
                             ImageURL = "https://images.static-bluray.com/movies/covers/41888_large.jpg?t=0",
+                            OutOfStock = false,
                             Price = 12,
                             Quantity = 0,
                             Title = "The Fast and the Furious",
@@ -168,9 +195,11 @@ namespace Webshop.Repository.Migrations
                         new
                         {
                             Id = 11,
+                            ButtonText = "Buy",
                             CurrentInStock = 15,
                             Description = "Bond has left active service. His peace is short-lived when his old friend Felix Leiter from the CIA turns up asking for help, leading Bond onto the trail of a mysterious villain armed with dangerous new technology.",
                             ImageURL = "https://images.static-bluray.com/movies/covers/348465_large.jpg?t=1699694249",
+                            OutOfStock = false,
                             Price = 15,
                             Quantity = 0,
                             Title = "No Time to Die",
@@ -179,9 +208,11 @@ namespace Webshop.Repository.Migrations
                         new
                         {
                             Id = 12,
+                            ButtonText = "Buy",
                             CurrentInStock = 10,
                             Description = "A young boy learns that he has extraordinary powers and is not of this Earth. As a young man, he journeys to discover where he came from and what he was sent here to do. But the hero in him must emerge if he is to save the world from annihilation and become the symbol of hope for all mankind.",
                             ImageURL = "https://images.static-bluray.com/movies/covers/51265_large.jpg?t=1442152541",
+                            OutOfStock = false,
                             Price = 10,
                             Quantity = 0,
                             Title = "Man of Steel",

@@ -39,7 +39,10 @@ namespace Webshop.Services
                 ImageURL = item.ImageURL,
                 TrailerURL = item.TrailerURL,
                 Price = item.Price,
-                CurrentInStock = item.CurrentInStock
+                CurrentInStock = item.CurrentInStock,
+                Quantity = item.Quantity,
+                OutOfStock = item.OutOfStock,
+                ButtonText = item.ButtonText
             };
 
             _dbContext.Items.Add(dbItem);
@@ -65,6 +68,9 @@ namespace Webshop.Services
             dbItem.TrailerURL = item.TrailerURL;
             dbItem.Price = item.Price;
             dbItem.CurrentInStock = item.CurrentInStock;
+			dbItem.Quantity = item.Quantity;
+			dbItem.OutOfStock = item.OutOfStock;
+			dbItem.ButtonText = item.ButtonText;
 
 
 			_dbContext.SaveChanges();

@@ -23,5 +23,9 @@ namespace Webshop.Model
         public int CurrentInStock { get; set; }
 
         public int Quantity { get; set; }
+
+        public bool OutOfStock { get; set; }
+
+        public string ButtonText { get; set; } = "Buy";
     }
 }

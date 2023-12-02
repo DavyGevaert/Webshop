@@ -33,10 +33,13 @@ else
 								<br/>
 								<br/>
 								<b>Current stock: @item.CurrentInStock</b>
+								<br />
+								<br />
+								<b>Quantity: @item.Quantity</b>
 							</p>							
 							<button class="btn btn-primary" type="button"
-								@onclick="() => BuyItem(item)">
-								Buy
+								@onclick="() => BuyItem(item)" disabled="@item.OutOfStock">
+								@item.ButtonText
 							</button>
 						</div>
 					</div>
@@ -59,8 +62,9 @@ else
 		Items = await _itemApi.FindAsync();
 	}
 
-	private void BuyItem(Item item)
-	{					
-		_cartState.AddItemToBasket(item);
+	private async Task BuyItem(Item item)
+	{
+		await _cartState.AddItemToBasket(item);
+		await LoadItems();
 	}
 }

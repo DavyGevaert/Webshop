@@ -4,6 +4,7 @@
 @using Webshop.Sdk;
 
 @inject CartState _cartState;
+@inject ItemApi _itemApi;
 @inject NavigationManager NavManager
 
 <h3>Shopping Cart</h3>
@@ -37,23 +38,36 @@
 	<button @onclick="() => Checkout()">Checkout</button>
 
 @code {
-	void Increment(Item item)
+	async void Increment(Item item)
 	{
-		item.Quantity += 1;
+		if (item.Quantity == item.CurrentInStock)
+		{
+			// do nothing, the customer sees that the item cannot be bought when the current stock supply reaches it's limit
+		} 
+		else
+		{
+			item.Quantity += 1;
+			await _itemApi.SaveItemAsync(item);
+		}
+
 		TotalPrice();
 	}
 
-	void Decrement(Item item)
+	async void Decrement(Item item)
 	{
 		if (item.Quantity <= 0)
 		{
 			RemoveItemFromBasket_If_Customer_Decrement_Quantity_Below_0(item);
 			TotalPrice();
+			await _itemApi.SaveItemAsync(item);
 		}
 		else
 		{
 			item.Quantity -= 1;
+			item.ButtonText = "Buy";
+			item.OutOfStock = false;
 			TotalPrice();
+			await _itemApi.SaveItemAsync(item);
 		}
 	}
 
