@@ -51,5 +51,55 @@ namespace Webshop.Sdk
 
 			}
 		}
+
+		public async Task Increment(Item item)
+		{
+			if (item.Quantity == item.CurrentInStock)
+			{
+				// do nothing, the customer sees that the item cannot be bought when the current stock supply reaches it's limit
+			}
+			else
+			{
+				item.Quantity += 1;
+				await _itemApi.SaveItemAsync(item);
+			}
+
+			TotalPrice();
+		}
+
+		public async Task Decrement(Item item)
+		{
+			if (item.Quantity <= 0)
+			{
+				RemoveItemFromBasket_If_Customer_Decrement_Quantity_Below_0(item);
+				TotalPrice();
+				await _itemApi.SaveItemAsync(item);
+			}
+			else
+			{
+				item.Quantity -= 1;
+				item.ButtonText = "Buy";
+				item.OutOfStock = false;
+				TotalPrice();
+				await _itemApi.SaveItemAsync(item);
+			}
+		}
+
+		public void RemoveItemFromBasket_If_Customer_Decrement_Quantity_Below_0(Item item)
+		{
+			Basket.Remove(item);
+		}
+
+		public string TotalPrice()
+		{
+			var totalPrice = 0;
+
+			foreach (var item in Basket)
+			{
+				totalPrice += (item.Price * item.Quantity);
+			}
+
+			return totalPrice.ToString("c");
+		}
 	}
 }

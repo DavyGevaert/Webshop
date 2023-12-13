@@ -4,7 +4,6 @@
 @using Webshop.Sdk;
 
 @inject CartState _cartState;
-@inject ItemApi _itemApi;
 @inject NavigationManager NavManager
 
 <h3>Shopping Cart</h3>
@@ -22,8 +21,8 @@
 				<div class="mb-4">@item.Description</div>
 				<span>Price: <b>@item.Price.ToString("C")</b></span>
 				<div>
-					<a class="btn btn-warning" @onclick="() => Decrement(item)">- 1</a>
-					<a class="btn btn-success" @onclick="() => Increment(item)">+ 1</a>
+				<a class="btn btn-warning" @onclick="() => _cartState.Decrement(item)">- 1</a>
+				<a class="btn btn-success" @onclick="() => _cartState.Increment(item)">+ 1</a>
 				</div>
 				<div>
 					Quantity: @item.Quantity | Price: @((item.Quantity * item.Price).ToString("c"))
@@ -32,44 +31,13 @@
 			
 		</div>
 	}
-	<div>Total price basket: @TotalPrice()</div>
+	<div>Total price basket: @_cartState.TotalPrice()</div>
 	<br/>
 	<br/>
 	<button @onclick="() => Checkout()">Checkout</button>
 
 @code {
-	async void Increment(Item item)
-	{
-		if (item.Quantity == item.CurrentInStock)
-		{
-			// do nothing, the customer sees that the item cannot be bought when the current stock supply reaches it's limit
-		} 
-		else
-		{
-			item.Quantity += 1;
-			await _itemApi.SaveItemAsync(item);
-		}
 
-		TotalPrice();
-	}
-
-	async void Decrement(Item item)
-	{
-		if (item.Quantity <= 0)
-		{
-			RemoveItemFromBasket_If_Customer_Decrement_Quantity_Below_0(item);
-			TotalPrice();
-			await _itemApi.SaveItemAsync(item);
-		}
-		else
-		{
-			item.Quantity -= 1;
-			item.ButtonText = "Buy";
-			item.OutOfStock = false;
-			TotalPrice();
-			await _itemApi.SaveItemAsync(item);
-		}
-	}
 
 	async Task Checkout()
 	{
@@ -81,22 +49,5 @@
 
 		// redirect to Home Page
 		NavManager.NavigateTo("/");
-	}
-
-	void RemoveItemFromBasket_If_Customer_Decrement_Quantity_Below_0(Item item)
-	{
-		_cartState.Basket.Remove(item);
-	}
-
-	string TotalPrice()
-	{
-		var totalPrice = 0;
-
-		foreach(var item in _cartState.Basket)
-		{
-			totalPrice += (item.Price * item.Quantity);
-		}
-
-		return totalPrice.ToString("c");
 	}
 }
