@@ -1,0 +1,33 @@
+﻿@model IList<Webshop.Model.Item>
+
+@{
+	ViewData["Title"] = "Webshop";
+}
+
+@foreach (var item in Model)
+{
+	<div class="row" style="margin-bottom:2rem;">
+		<div class="col-md-3">
+			<img src="@item.ImageURL" width="200" class="img-thumbnail">
+		</div>
+		<div class="col">
+			<h5>
+				<a href="@Url.Action("Details", "Cart", item)" >@item.Title</a>
+			</h5>
+			<div class="mb-4">@item.Description</div>
+			<span>Price: <b>@item.Price.ToString("C")</b></span>
+			<div>
+				<a class="btn btn-warning" asp-action="Decrement" asp-route-Id="@item.Id">- 1</a>
+				<a class="btn btn-success" asp-action="Increment" asp-route-Id="@item.Id">+ 1</a>
+			</div>
+			<div>
+				Quantity: @item.Quantity | Price: @((item.Quantity * item.Price).ToString("c"))
+			</div>
+		</div>
+
+	</div>
+}
+<div>Total price basket: @ViewBag.TotalPrice</div>
+<br />
+<br />
+<a class="btn btn-success" asp-action="Checkout">Checkout</a>

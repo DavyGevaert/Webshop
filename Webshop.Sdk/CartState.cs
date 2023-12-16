@@ -69,7 +69,7 @@ namespace Webshop.Sdk
 
 		public async Task Decrement(Item item)
 		{
-			if (item.Quantity <= 0)
+			if (item.Quantity == 0)
 			{
 				RemoveItemFromBasket_If_Customer_Decrement_Quantity_Below_0(item);
 				TotalPrice();
@@ -100,6 +100,11 @@ namespace Webshop.Sdk
 			}
 
 			return totalPrice.ToString("c");
+		}
+
+		public IList<Item> ReturnBasket()
+		{
+			return Basket;
 		}
 	}
 }

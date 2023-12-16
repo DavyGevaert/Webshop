@@ -1,0 +1,41 @@
+﻿@model IList<Webshop.Model.Item>
+@{
+	ViewData["Title"] = "Webshop";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Quantity</th>
+			<th>CurrentInStock</th>
+			<th>Buy</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td><img src="@item.ImageURL" class="itemPhoto" /></td>
+				<td><a href="@Url.Action("Details", "Home", item)'">@item.Title</a></td>
+				<td>@item.Description</td>
+				<td>@item.Quantity</td>
+				<td>@item.CurrentInStock</td>
+
+
+				<td>
+					@using (Html.BeginForm("Buy", "Home", item, FormMethod.Post))
+					{
+						<input type="submit" value="Buy"
+							   onclick="location.href='@Url.Action("Buy", "Home", item)'" />
+					}
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
