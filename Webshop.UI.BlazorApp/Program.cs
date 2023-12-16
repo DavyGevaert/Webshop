@@ -21,6 +21,6 @@ builder.Services.AddHttpClient("Webshop", options =>
 });
 
 builder.Services.AddTransient<ItemApi>();
-builder.Services.AddScoped<CartState>();
+builder.Services.AddSingleton<CartState>();
 
 await builder.Build().RunAsync();
