@@ -18,6 +18,11 @@ namespace Webshop.Sdk
             _httpClientFactory = httpClientFactory;
         }
 
+        public ItemApi()
+        {
+            
+        }
+
         public async Task<Item> GetAsync(int id)
         {
             var httpClient = _httpClientFactory.CreateClient("Webshop");
