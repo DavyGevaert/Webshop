@@ -22,9 +22,6 @@ namespace Webshop.UI.WPFManagement
 
         protected override void OnStartup(StartupEventArgs e)
         {
-
-            base.OnStartup(e);
-
             var builder = new ConfigurationBuilder();
 
             Configuration = builder.Build();
