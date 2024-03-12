@@ -1,14 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Webshop.Model;
+using Webshop.Repository.Extensions;
 
 namespace Webshop.Repository
 {
-    public class WebshopDbContext : DbContext
+    public class WebshopDbContext : IdentityDbContext
     {
         public WebshopDbContext(DbContextOptions<WebshopDbContext> options) : base(options)
         {
@@ -24,6 +26,7 @@ namespace Webshop.Repository
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.RemovePluralizingTableNameConvention();
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Item>().HasData(

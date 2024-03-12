@@ -3,7 +3,7 @@
 namespace Webshop.Api
 {
 	[ApiController]
-    [Route("[Controller]")]
+    [Route("[controller]")]
     public class ApiBaseController : ControllerBase
     {
     }
