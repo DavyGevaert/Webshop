@@ -12,39 +12,44 @@
 }
 else
 {
-	<div class="container-fluid content-row">
-		<div class="row">
+    <div class="container mt-5">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-4">
+            <!-- Repeat this card 6 times -->
+        
 			@foreach (var item in Items)
 			{
-				<div class="col-lg-3 col-md-6" style="margin-bottom: 20px;">
-					<div class="card h-100" style="width: 20rem;">
-                        <p style="text-align:center; margin-top: 20px">
-							<img class="img-thumbnail" src="@item.ImageURL" alt="@item.ImageURL"
-								height="250px" width="200px" />
-						</p>								
-						<div class="card-body text-center">
-							<h5 class="card-title mb-3">
-								<a href="/details/@item.Id">@item.Title</a>
-							</h5>
+				<div class="col">
+					<div class="card h-100">
+
+						<img class="card-img-top" src="@item.ImageURL" alt="@item.ImageURL" height="250px" width="200px" />
+
+						<div class="card-body">
+							<h5 class="card-title"><a href="/details/@item.Id">@item.Title</a></h5>
 							<p class="card-text">
 								<b>@item.Price.ToString("C")</b>
 								<br/>
-								<br/>
 								<b>Current stock: @item.CurrentInStock</b>
-								<br />
-								<br />
+								<br/>
 								<b>Quantity: @item.Quantity</b>
-							</p>							
-							<button class="btn btn-primary" type="button"
-								@onclick="() => BuyItem(item)" disabled="@item.OutOfStock">
-								@item.ButtonText
-							</button>
+							</p>
+                        </div>
+
+						<div class="card-footer">
+                        <button class="btn btn-primary" type="button"
+                                @onclick="() => BuyItem(item)" disabled="@item.OutOfStock">
+                            @item.ButtonText
+                        </button>
 						</div>
+
 					</div>
 				</div>
+
 			}
 		</div>
-	</div>
+    </div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 }
 
 @code {

@@ -30,7 +30,7 @@ namespace Webshop.UI.Mvc.Controllers
 		{
 			var item = await _itemApi.GetAsync(id);
 
-			item.TrailerURL = item.TrailerURL.Replace("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/");
+			// item.TrailerURL = item.TrailerURL.Replace("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/");
 
 			return RedirectToAction("Details", "Home", item);
 		}
